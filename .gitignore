@@ -1,0 +1,5 @@
+node_modules
+backend/health_system.db
+build
+.env
+.DS_Store
