@@ -10,13 +10,13 @@ const metricsRoutes = require('./routes/metrics');
 const app = express();
 
 // ─── Middleware ───────────────────────────────────────────────────────────────
-app.use(helmet());
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: [
+    'http://localhost:3000',
+    'https://health-risk-management.vercel.app'
+  ],
   methods: ['GET', 'POST', 'DELETE', 'PATCH'],
 }));
-app.use(morgan('dev'));
-app.use(express.json());
 
 // ─── Routes ───────────────────────────────────────────────────────────────────
 app.use('/api/patients', patientRoutes);
