@@ -181,7 +181,7 @@
       border-radius: 8px; padding: 10px 14px;
       color: var(--text); font-family: var(--font-display); font-size: 13px;
       outline: none; transition: border-color 0.15s;
-      -webkit-appearance: none;
+      
     }
     .field input::placeholder { color: var(--muted); }
     .field input:focus, .field select:focus { border-color: var(--accent); }
@@ -450,7 +450,7 @@
 </div>
 
 <script>
-  const BASE = 'http://localhost:5001/api';
+ const BASE = 'https://healthriskmanagement.onrender.com/api';
   let riskChart = null;
 
   const panelTitles = {
