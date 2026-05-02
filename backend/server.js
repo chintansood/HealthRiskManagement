@@ -10,13 +10,17 @@ const metricsRoutes = require('./routes/metrics');
 const app = express();
 
 // ─── Middleware ───────────────────────────────────────────────────────────────
+app.use(helmet());
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    'https://health-risk-management.vercel.app'
+    'https://health-risk-management.vercel.app',
+    'https://health-risk-management-rle16lbtv-chintans-projects-b3b552c4.vercel.app'
   ],
   methods: ['GET', 'POST', 'DELETE', 'PATCH'],
 }));
+app.use(morgan('dev'));
+app.use(express.json());
 
 // ─── Routes ───────────────────────────────────────────────────────────────────
 app.use('/api/patients', patientRoutes);
@@ -47,7 +51,6 @@ app.use((err, req, res, next) => {
 });
 
 // ─── Start ────────────────────────────────────────────────────────────────────
-// Port 5001 avoids macOS AirPlay conflict on 5000
 const PORT = process.env.PORT || 5001;
 
 const server = app.listen(PORT, () => {
